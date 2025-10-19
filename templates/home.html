@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Grocery Store{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <h1>Welcome to Grocery Store POS</h1>
+    <p class="subtitle">Manage your inventory and sales efficiently</p>
+    
+    <div class="category-grid">
+        <a href="{{ url_for('inventory') }}?category=Canned Goods" class="category-card">
+            <h2>Canned Goods</h2>
+            <p>View Products</p>
+        </a>
+
+        <a href="{{ url_for('inventory') }}?category=Frozen Goods" class="category-card">
+            <h2>Frozen Goods</h2>
+            <p>View Products</p>
+        </a>
+
+        <a href="{{ url_for('inventory') }}?category=Rice Section" class="category-card">
+            <h2>Rice Section</h2>
+            <p>View Products</p>
+        </a>
+
+        <a href="{{ url_for('inventory') }}?category=Beverages" class="category-card">
+            <h2>Beverages</h2>
+            <p>View Products</p>
+        </a>
+
+        <a href="{{ url_for('inventory') }}?category=Personal & Sanitary" class="category-card">
+            <h2>Personal & Sanitary</h2>
+            <p>View Products</p>
+        </a>
+
+        <a href="{{ url_for('inventory') }}?category=Bakery Products" class="category-card">
+            <h2>Bakery Products</h2>
+            <p>View Products</p>
+        </a>
+    </div>
+</div>
+{% endblock %}

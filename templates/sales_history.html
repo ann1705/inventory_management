@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Sales History - Grocery Store{% endblock %}
+
+{% block content %}
+<div class="sales-history-container">
+    <h1>Sales History</h1>
+    
+    <div class="revenue-summary">
+        <h2>Total Revenue: ₱{{ "%.2f"|format(total_revenue) }}</h2>
+        <p>Total Transactions: {{ sales|length }}</p>
+    </div>
+
+    {% if sales %}
+    <table class="sales-table">
+        <thead>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Total Price</th>
+                <th>Date & Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sale in sales %}
+            <tr>
+                <td>{{ sale.id }}</td>
+                <td>{{ sale.product_name }}</td>
+                <td>{{ sale.quantity }}</td>
+                <td>₱{{ "%.2f"|format(sale.unit_price) }}</td>
+                <td>₱{{ "%.2f"|format(sale.total_price) }}</td>
+                <td>{{ sale.date_sold.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="no-data">No sales recorded yet</p>
+    {% endif %}
+
+    <div class="form-actions">
+        <a href="{{ url_for('sales') }}" class="btn btn-primary">Back to Sales</a>
+    </div>
+</div>
+{% endblock %}
